@@ -1,0 +1,12 @@
+<h1>Search for Github Repositories</h1>
+<%= form_tag search_index_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search_term, params[:search_term] %>
+    <%= submit_tag "Search" %>
+  </p>
+  
+  <% @items.each do |results| %>
+    <%= render 'result', :results => results %><br>
+  <% end %>
+<% end %>
+
