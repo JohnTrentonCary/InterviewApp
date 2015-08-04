@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'search/index'
-  get 'search/results'
+  get 'search/auth'
 
   root 'search#index'
 end
