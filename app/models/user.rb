@@ -11,5 +11,6 @@ class User < ActiveRecord::Base
   def update_access_token(auth)
     self.access_token = auth["credentials"]["token"]
     self.save
+    self
   end
 end
