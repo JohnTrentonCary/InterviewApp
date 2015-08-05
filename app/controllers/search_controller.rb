@@ -3,7 +3,7 @@ class SearchController < ApplicationController
   def index
     @items = []
 
-    results = ::GithubSearch.search(params[:search_term]) if params[:search_term]
+    results = ::GithubSearch.search(params[:search_term], current_user.access_token) if params[:search_term]
     @items = results["items"] if results
   end
 
