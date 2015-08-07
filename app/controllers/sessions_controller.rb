@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
                 User.find_by_provider_and_uid(auth["provider"], auth["uid"])
               #3: else update them
               else
-               current_user.update_access_token     
+               current_user.update_access_token(auth)
               end
             #2: else set it
             else
