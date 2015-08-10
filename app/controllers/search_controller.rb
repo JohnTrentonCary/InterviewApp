@@ -2,10 +2,15 @@ require "github_search"
 class SearchController < ApplicationController
   def index
 
-    @items = []
 
     results = ::GithubSearch.search(params[:search_term], current_user.access_token) if params[:search_term] && valid_access_token?
+    @items = []
     @items = results["items"] if results
+
+    total_pages = results["total_count"]/10 if results
+    total_pages += 1 if results && results['total_count']%10 != 0
+
+    @items = Kaminari.paginate_array(@items, :total_pages => total_pages).page(params[:page]).per(10)
   end
 
   private
