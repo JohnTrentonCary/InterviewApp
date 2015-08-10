@@ -1,18 +1,39 @@
-<h1>Search for Github Repositories</h1>
+<div class="contain-to-grid sticky">
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><%= link_to("Search for Github Repositories", root_url) %></h1>
+      </li>
+    </ul>
+  </nav>
+</div>
 <% if current_user %>
   <%= form_tag search_index_path, :method => 'get' do %>
     <p>
-      <%= text_field_tag :search_term, params[:search_term] %>
-      <%= submit_tag "Search", class: "button round"%>
+      <div class="large-6 large-centered columns">
+        <div class="row collapse postfix-round">
+          <div class="small-9 columns">
+            <%= text_field_tag :search_term, params[:search_term], class: "small-4 columns" %>
+          </div>
+          <div class="small-3 columns">
+            <%= submit_tag "Search", class: "button postfix"%>
+          </div>
+        </div>
+      </div>
     </p>
   <% end %>
 
-<%= paginate @items %>
-
-  <% @items.each do |results| %>
-    <%= render 'result', :results => results %><br>
-  <% end %>
-<% else %>
+<div class="row">
+  <div class="small-6 small-centered columns">
+    <%= paginate @items %>
+  </div>
+  <div class="small-8 small-centered columns">
+      <% @items.each do |results| %>
+        <%= render 'result', :results => results %><br>
+      <% end %>
+    <% else %>
+  </div>
+</div>
   <p> 
     <%= link_to "Github Authurization", "/auth/github" %>
   </p>
