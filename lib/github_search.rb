@@ -8,7 +8,5 @@ class GithubSearch
               "page" => page}
     results = RestClient.get 'https://api.github.com/search/repositories', {:params => params}
     results = JSON.parse results
-#    puts results
-#    results
   end 
 end

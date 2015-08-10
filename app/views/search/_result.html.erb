@@ -1,15 +1,27 @@
 <p>
-<strong><%= link_to results["name"], results["html_url"] %></strong>
-by
-<!-- Will eventually be linked straight the the owners github page -->
-<!-- %= link_to results["owner"]["login"], results["owner"]["url"] % -->
-<%= results["owner"]["login"] %><br>
-Stars: <%= results["stargazers_count"] %> | 
-Forks: <%= results["forks_count"] %> | 
-Open Issues <%= results["open_issues_count"] %>
-<br>
-Language: <%= results["language"] %> | 
-Line Count: <%= results["size"] %>
-<br>
-Last Updated: <%= results["updated_at"] %>
+  <div class="row">
+    <div class="small-4 small-centered columns">
+      <strong><%= link_to results["name"], results["html_url"] %></strong>
+      by
+      <%= results["owner"]["login"] %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-4 small-centered columns">
+    Stars: <%= results["stargazers_count"] %> | 
+    Forks: <%= results["forks_count"] %> | 
+    Open Issues <%= results["open_issues_count"] %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-4 small-centered columns">
+      Language: <%= results["language"] %> | 
+      Line Count: <%= results["size"] %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-4 small-centered columns grey">
+      Last Updated: <%= results["updated_at"] %>
+    </div>
+  </div>
 </p>

@@ -1,9 +1,9 @@
-<center> <h1>Search for Github Repositories</h1>
+<h1>Search for Github Repositories</h1>
 <% if current_user %>
   <%= form_tag search_index_path, :method => 'get' do %>
     <p>
       <%= text_field_tag :search_term, params[:search_term] %>
-      <%= submit_tag "Search" %>
+      <%= submit_tag "Search", class: "button round"%>
     </p>
   <% end %>
 
@@ -17,4 +17,4 @@
     <%= link_to "Github Authurization", "/auth/github" %>
   </p>
 <% end %>
-</center>
+

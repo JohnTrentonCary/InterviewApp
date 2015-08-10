@@ -15,7 +15,6 @@ class SearchController < ApplicationController
     total_count = results["total_count"] if results
     total_count = [total_count, 1000].min
 
-#    Rails.logger.debug "Total pages: #{total_pages}"
     @items = Kaminari.paginate_array(@items, :total_count => total_count).page(params[:page]).per(results_per_page)
   end
 
