@@ -24,10 +24,17 @@
   </nav>
 </div>
 
+<div class="row">
+  <div class="small3 small-centered text-center columns">
+    <p id="alert">
+     <font color="red"> <strong><%= alert %></strong></font>
+    </p>
+  </div>
+</div>
+
 <% unless current_user %>
   <p> 
-    <div class="row"
-      div class="class-6"></div>
+    <div class="row">
       <div class="small-3 small-centered columns">
         <%= link_to "Github Authurization", "/auth/github", class: "small info button round" %>
       </div>

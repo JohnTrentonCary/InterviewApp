@@ -9,7 +9,7 @@ class SearchController < ApplicationController
       results = ::GithubSearch.search(params[:search_term], current_user.access_token, results_per_page, params[:page] || 1) if params[:search_term] && valid_access_token?
 
     rescue
-      flash.now[:alert] = "Search can't be blank"
+      flash.now[:alert] = "Search can't be blank!"
     end
 
     @items = []
@@ -21,10 +21,6 @@ class SearchController < ApplicationController
     total_count = 0
     total_count = results["total_count"] if results
     total_count = [total_count, 1000].min
-
-#    else 
-#      flash.now[:alert] = "Search can't be blank"
-#    end
 
     @items = Kaminari.paginate_array(@items, :total_count => total_count).page(params[:page]).per(results_per_page)
  
