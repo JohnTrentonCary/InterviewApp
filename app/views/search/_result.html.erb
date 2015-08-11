@@ -1,27 +1,10 @@
-<p>
-  <div class="row">
-    <div class="small-6 small-centered columns">
-      <strong><%= link_to results["name"], results["html_url"] %></strong>
-      by
-      <%= results["owner"]["login"] %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="small-8 small-centered columns">
-    Stars: <%= results["stargazers_count"] %> | 
-    Forks: <%= results["forks_count"] %> | 
-    Open Issues <%= results["open_issues_count"] %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="small-8 small-centered columns">
-      Language: <%= results["language"] %> | 
-      Line Count: <%= results["size"] %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="small-8 small-centered columns grey">
-    Last Updated: <%= results["updated_at"] %>
-    </div>
-  </div>
-</p>
+<tr>
+<td><strong><%= link_to results["name"], results["html_url"] %></strong></td>
+<td><%= results["owner"]["login"] %></td>
+<td><%= results["stargazers_count"] %></td>
+<td><%= results["forks_count"] %></td>
+<td><%= results["open_issues_count"] %></td>
+<td><%= results["language"] %></td>
+<td><%= results["size"] %></td>
+<td><%= results["updated_at"] %></td>
+</tr>

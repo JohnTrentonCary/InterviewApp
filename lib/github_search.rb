@@ -1,7 +1,7 @@
 class GithubSearch
   def self.search(search, access_token, results_per_page, page)
     params = {"q" => search,
-              "sort" => "star",
+              "sort" => "stars",
               "order" => "desc",
               "access_token" => access_token,
               "per_page" => results_per_page,

@@ -2,7 +2,7 @@ require "github_search"
 class SearchController < ApplicationController
   def index
 
-    results_per_page = 10
+    results_per_page = 20
 
     results = ::GithubSearch.search(params[:search_term], current_user.access_token, results_per_page, params[:page] || 1) if params[:search_term] && valid_access_token?
     @items = []

@@ -1,41 +1,68 @@
-<div class="contain-to-grid sticky">
+<div class="fixed">
   <nav class="top-bar" data-topbar role="navigation">
-    <ul class="title-area">
+        <ul class="title-area">
       <li class="name">
         <h1><%= link_to("Search for Github Repositories", root_url) %></h1>
       </li>
     </ul>
+    <% if current_user %>
+      <%= form_tag search_index_path, :method => 'get' do %>   
+        <ul class="right">
+          <li class="has-form">
+            <div class="row collapse">
+              <div class="large-6 small-7 columns">
+                <%= text_field_tag :search_term, params[:search_term] %>
+              </div>
+              <div class="large-3 small-2 columns left">
+                <%= submit_tag "Search", class: "button"%>
+              </div>
+            </div>
+          </li>
+        </ul>
+      <% end %>
+    <% end %>
   </nav>
 </div>
-<% if current_user %>
-  <%= form_tag search_index_path, :method => 'get' do %>
-    <p>
-      <div class="large-6 large-centered columns">
-        <div class="row collapse postfix-round">
-          <div class="small-9 columns">
-            <%= text_field_tag :search_term, params[:search_term], class: "small-4 columns" %>
-          </div>
-          <div class="small-3 columns">
-            <%= submit_tag "Search", class: "button postfix"%>
-          </div>
-        </div>
-      </div>
-    </p>
-  <% end %>
 
-<div class="row">
-  <div class="small-6 small-centered columns">
-    <%= paginate @items %>
-  </div>
-  <div class="small-8 small-centered columns">
-      <% @items.each do |results| %>
-        <%= render 'result', :results => results %><br>
-      <% end %>
-    <% else %>
-  </div>
-</div>
+<% unless current_user %>
   <p> 
-    <%= link_to "Github Authurization", "/auth/github" %>
+    <div class="row"
+      div class="class-6"></div>
+      <div class="small-3 small-centered columns">
+        <%= link_to "Github Authurization", "/auth/github", class: "small info button round" %>
+      </div>
+    </div>
   </p>
 <% end %>
 
+<% if current_user %>
+  <p>
+    <div class="row collapse">
+      <div class="small-8 small-centered columns text-center">
+        <ul class="pagination">
+        <%= paginate @items %>
+        </ul>
+      </div>
+      <table>
+        <thead>
+          <th width="150">Repo Name</th>
+          <th width="125">Author</th>
+          <th>Stars</th>
+          <th>Forks</th>
+          <th>Open Issues</th>
+          <th>Language</th>
+          <th>Line Count</th>
+          <th>Last Updated</th>
+        </thead>
+        <tbody>
+          <% @items.each do |results| %>
+            <%= render 'result', :results => results %>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="small-8 small-centered columns text-center">
+        <%= paginate @items %>
+      </div>      
+    </div>
+  </p>
+<% end %>
